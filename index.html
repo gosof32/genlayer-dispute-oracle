@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DisputeResolutionOracle DApp</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 20px; background: #f9f9f9; }
+        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        input, button { width: 100%; padding: 10px; margin-top: 10px; margin-bottom: 10px; box-sizing: border-box; }
+        button { background: #4F46E5; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #4338CA; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>⚖️ DisputeResolutionOracle Dashboard</h2>
+        <p>A decentralized AI-powered arbitration platform built on GenLayer.</p>
+        
+        <label>Claim Details:</label>
+        <input type="text" id="claimInput" placeholder="Enter claim to dispute...">
+        <button onclick="createDispute()">Create Dispute</button>
+
+        <label style="margin-top: 20px; display:block;">Dispute ID:</label>
+        <input type="number" id="disputeIdInput" placeholder="Enter Dispute ID (e.g. 0)">
+        <button onclick="resolveDispute()">Resolve Dispute via AI Consensus</button>
+    </div>
+
+    <script>
+        function createDispute() {
+            const claim = document.getElementById('claimInput').value;
+            alert(`Simulated: Creating dispute for claim -> "${claim}". Please deploy and test via GenLayer Studio!`);
+        }
+        function resolveDispute() {
+            const id = document.getElementById('disputeIdInput').value;
+            alert(`Simulated: Triggering consensus resolution for Dispute ID #${id}.`);
+        }
+    </script>
+</body>
+</html>
