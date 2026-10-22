@@ -2,6 +2,8 @@
 # { "Depends": "py-genlayer:1jb45aa8ynh2a9c9xn3b7qqh8sm5q93hwfp7jqmwsfhh8jpz09h6" }
 
 from genlayer import *
+import json
+import typing
 
 
 class DisputeResolutionOracle(gl.Contract):
@@ -24,24 +26,43 @@ class DisputeResolutionOracle(gl.Contract):
 
     @gl.public.write
     def resolve_dispute(self, dispute_id: u256) -> str:
+        # Mengambil data klaim
         claim_info = self.disputes[dispute_id]
 
-        # Menggunakan exec_prompt langsung agar validator lebih mudah mencapai konsensus
-        prompt = f"""
-        Analyze this claim: "{claim_info}"
-        Is this claim generally VALID or INVALID based on common knowledge and facts?
-        Respond strictly with one word: VALID or INVALID.
-        """
+        # Fungsi helper non-deterministik mengikuti pola resmi GenLayer
+        def evaluate_claim() -> typing.Any:
+            task = f"""
+            Analyze this claim: "{claim_info}"
+            Is this claim generally VALID or INVALID based on common knowledge and facts?
+            Respond strictly in the following JSON format:
+            {{
+                "status": "VALID" or "INVALID"
+            }}
+            Do not include any extra text or formatting prefix/suffix.
+            """
+            
+            result_str = (
+                gl.nondet.exec_prompt(task)
+                .replace("```json", "")
+                .replace("```", "")
+                .strip()
+            )
+            return json.loads(result_str)
 
         try:
-            consensus_result = str(gl.exec_prompt(prompt)).strip().upper()
-        except Exception:
-            consensus_result = "VALID"
-
-        if "VALID" in consensus_result:
-            self.dispute_statuses[dispute_id] = "RESOLVED_VALID"
-        else:
-            self.dispute_statuses[dispute_id] = "RESOLVED_INVALID"
+            # Menggunakan prinsip konsensus strict_eq seperti pada contoh resmi
+            consensus_result = gl.eq_principle.strict_eq(evaluate_claim)
+            final_status = consensus_result.get("status", "RESOLVED_VALID")
+            
+            if final_status == "VALID":
+                self.dispute_statuses[dispute_id] = "RESOLVED_VALID"
+            else:
+                self.dispute_statuses[dispute_id] = "RESOLVED_INVALID"
+                
+        except Exception as err:
+            error_msg = f"ERR: {str(err)[:45]}"
+            self.dispute_statuses[dispute_id] = error_msg
+            return error_msg
 
         return self.dispute_statuses[dispute_id]
 
