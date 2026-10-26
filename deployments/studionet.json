@@ -1,0 +1,265 @@
+{
+  "network": "studionet",
+  "rpc": "https://studio.genlayer.com/api",
+  "contract": "0x6b375eA35dad7e417c7D41DAb61457bCf7554558",
+  "generated_at": "2026-10-25T13:09:50.767Z",
+  "transactions": [
+    {
+      "label": "deploy contract",
+      "hash": "0xee92b49882d1354981c6766111e93dc458a038324a82bd2dac3fa95c15368a03",
+      "from": "0x2cDD67E48370f3C317020Bdaf69cB5B842356339",
+      "status": "FINALIZED",
+      "consensus": "MAJORITY_AGREE",
+      "execution": "SUCCESS",
+      "ok": true,
+      "expected_ok": true,
+      "return_value": "null",
+      "error": null
+    },
+    {
+      "label": "create_dispute #0 (supported claim)",
+      "hash": "0xf1e00930fd30f4506e85042bc521b5a224e2ae7a878fca6458717f8712c615bc",
+      "from": "0x2cDD67E48370f3C317020Bdaf69cB5B842356339",
+      "status": "FINALIZED",
+      "consensus": "MAJORITY_AGREE",
+      "execution": "SUCCESS",
+      "ok": true,
+      "expected_ok": true,
+      "return_value": "0",
+      "error": null
+    },
+    {
+      "label": "submit_counter_evidence #0 (respondent)",
+      "hash": "0x68c948a8a4a31e84917c1dbed8e05478112a59260b05d2ece60a327d594a7db6",
+      "from": "0xc37529D468b2f6d6D1777453CD247346b54a9B89",
+      "status": "FINALIZED",
+      "consensus": "MAJORITY_AGREE",
+      "execution": "SUCCESS",
+      "ok": true,
+      "expected_ok": true,
+      "return_value": "null",
+      "error": null
+    },
+    {
+      "label": "resolve_dispute #0",
+      "hash": "0xd4edebbba1374af0127677613d124ee1bcf7f63e1a0fc9dd3e5ab2c2354dc734",
+      "from": "0x270D56260e9fe4b1A4524950F850D2643015CACF",
+      "status": "FINALIZED",
+      "consensus": "MAJORITY_AGREE",
+      "execution": "SUCCESS",
+      "ok": true,
+      "expected_ok": true,
+      "return_value": "{\"decisive_source\":\"claimant\"\"decisive_url\":\"https://en.wikipedia.org/api/rest_v1/page/summary/Bitcoin\"\"dispute_id\":0\"outcome\":\"SUPPORTED\"\"quote\":\"Use of bitcoin as a currency began in 2009, with the release of its open-source implementation.\"\"round\":0}",
+      "error": null
+    },
+    {
+      "label": "resolve_dispute #0 again (must be rejected: finalized)",
+      "hash": "0x8ff731c52d7cd737982ce3506f0405fa14c534bb454746730645be00037f2f71",
+      "from": "0x270D56260e9fe4b1A4524950F850D2643015CACF",
+      "status": "FINALIZED",
+      "consensus": "MAJORITY_AGREE",
+      "execution": "ERROR",
+      "ok": false,
+      "expected_ok": false,
+      "return_value": null,
+      "error": "Contract execution failed (ERROR)"
+    },
+    {
+      "label": "create_dispute #1 (refutable claim)",
+      "hash": "0x40a45ccde1d54e5cc355915caf62b7fc4ee1bc2f4b95b6ecf6c1f165bcfe50ad",
+      "from": "0x2cDD67E48370f3C317020Bdaf69cB5B842356339",
+      "status": "FINALIZED",
+      "consensus": "MAJORITY_AGREE",
+      "execution": "SUCCESS",
+      "ok": true,
+      "expected_ok": true,
+      "return_value": "1",
+      "error": null
+    },
+    {
+      "label": "resolve_dispute #1",
+      "hash": "0x9ae97ccddde4000078c57c71fa59ab2936f293d747f4102a37bc6ead09e9687d",
+      "from": "0x270D56260e9fe4b1A4524950F850D2643015CACF",
+      "status": "FINALIZED",
+      "consensus": "MAJORITY_AGREE",
+      "execution": "SUCCESS",
+      "ok": true,
+      "expected_ok": true,
+      "return_value": "{\"decisive_source\":\"claimant\"\"decisive_url\":\"https://en.wikipedia.org/api/rest_v1/page/summary/Bitcoin\"\"dispute_id\":1\"outcome\":\"REFUTED\"\"quote\":\"Bitcoin is the first decentralized cryptocurrency. Based on a free-market ideology, bitcoin was invented in 2008 when an unknown person published a white paper under the pseudonym of Satoshi Nakamoto.\"\"round\":0}",
+      "error": null
+    },
+    {
+      "label": "create_dispute #2 (evidence does not cover claim)",
+      "hash": "0xcc999ea7cbf67dd3e7e32587f16c3f1bbed6f441baeffdb56c3109a9f6a259bc",
+      "from": "0x2cDD67E48370f3C317020Bdaf69cB5B842356339",
+      "status": "FINALIZED",
+      "consensus": "MAJORITY_AGREE",
+      "execution": "SUCCESS",
+      "ok": true,
+      "expected_ok": true,
+      "return_value": "2",
+      "error": null
+    },
+    {
+      "label": "resolve_dispute #2",
+      "hash": "0x4f005d98a471f3c7feb66f97af0f87e7a3494331a8265932a2a232e6057d0f37",
+      "from": "0x270D56260e9fe4b1A4524950F850D2643015CACF",
+      "status": "FINALIZED",
+      "consensus": "MAJORITY_AGREE",
+      "execution": "SUCCESS",
+      "ok": true,
+      "expected_ok": true,
+      "return_value": "{\"decisive_source\":\"none\"\"decisive_url\":\"\"\"dispute_id\":2\"outcome\":\"INCONCLUSIVE\"\"quote\":\"\"\"round\":0}",
+      "error": null
+    },
+    {
+      "label": "request_reassessment #2 by outsider (must be rejected)",
+      "hash": "0x8faf55719f1cb0760b7736b10848965b53eb5eda393cd792cea3bceeaca5145b",
+      "from": "0x270D56260e9fe4b1A4524950F850D2643015CACF",
+      "status": "FINALIZED",
+      "consensus": "MAJORITY_AGREE",
+      "execution": "ERROR",
+      "ok": false,
+      "expected_ok": false,
+      "return_value": null,
+      "error": "Contract execution failed (ERROR)"
+    }
+  ],
+  "final_state": [
+    {
+      "dispute": {
+        "acceptance_criteria": "SUPPORTED if a cited source states bitcoin use as a currency began in 2009; REFUTED if a cited source gives a different year.",
+        "claim": "Bitcoin began to be used as a currency in 2009.",
+        "claimant": "0x2cdd67e48370f3c317020bdaf69cb5b842356339",
+        "claimant_evidence_url": "https://en.wikipedia.org/api/rest_v1/page/summary/Bitcoin",
+        "created_at": "2026-10-25T13:03:45.082138Z",
+        "current_round": 0,
+        "id": 0,
+        "latest_verdict": {
+          "decisive_source": "claimant",
+          "decisive_url": "https://en.wikipedia.org/api/rest_v1/page/summary/Bitcoin",
+          "dispute_id": 0,
+          "outcome": "SUPPORTED",
+          "quote": "Use of bitcoin as a currency began in 2009, with the release of its open-source implementation.",
+          "reasoning": "The claimant source explicitly states that the use of bitcoin as a currency began in 2009, satisfying the acceptance criteria.",
+          "resolved_at": "2026-10-25T13:04:55.981514Z",
+          "resolved_by": "0x270d56260e9fe4b1a4524950f850d2643015cacf",
+          "round": 0
+        },
+        "max_reassessments": 1,
+        "reassessments_used": 0,
+        "respondent": "0xc37529d468b2f6d6d1777453cd247346b54a9b89",
+        "respondent_evidence_url": "https://en.wikipedia.org/api/rest_v1/page/summary/Ethereum",
+        "respondent_position": "Bitcoin was in use as a currency only from 2010.",
+        "status": "RESOLVED"
+      },
+      "history": [
+        {
+          "reassessment": null,
+          "round": 0,
+          "verdict": {
+            "decisive_source": "claimant",
+            "decisive_url": "https://en.wikipedia.org/api/rest_v1/page/summary/Bitcoin",
+            "dispute_id": 0,
+            "outcome": "SUPPORTED",
+            "quote": "Use of bitcoin as a currency began in 2009, with the release of its open-source implementation.",
+            "reasoning": "The claimant source explicitly states that the use of bitcoin as a currency began in 2009, satisfying the acceptance criteria.",
+            "resolved_at": "2026-10-25T13:04:55.981514Z",
+            "resolved_by": "0x270d56260e9fe4b1a4524950f850d2643015cacf",
+            "round": 0
+          }
+        }
+      ]
+    },
+    {
+      "dispute": {
+        "acceptance_criteria": "SUPPORTED if a cited source states the bitcoin white paper was published in 2011; REFUTED if a cited source states it was published in another year.",
+        "claim": "The bitcoin white paper was published in 2011.",
+        "claimant": "0x2cdd67e48370f3c317020bdaf69cb5b842356339",
+        "claimant_evidence_url": "https://en.wikipedia.org/api/rest_v1/page/summary/Bitcoin",
+        "created_at": "2026-10-25T13:06:22.945569Z",
+        "current_round": 0,
+        "id": 1,
+        "latest_verdict": {
+          "decisive_source": "claimant",
+          "decisive_url": "https://en.wikipedia.org/api/rest_v1/page/summary/Bitcoin",
+          "dispute_id": 1,
+          "outcome": "REFUTED",
+          "quote": "Bitcoin is the first decentralized cryptocurrency. Based on a free-market ideology, bitcoin was invented in 2008 when an unknown person published a white paper under the pseudonym of Satoshi Nakamoto.",
+          "reasoning": "The claimant source states the white paper was published in 2008. That directly contradicts the claim that it was published in 2011.",
+          "resolved_at": "2026-10-25T13:07:01.465234Z",
+          "resolved_by": "0x270d56260e9fe4b1a4524950f850d2643015cacf",
+          "round": 0
+        },
+        "max_reassessments": 1,
+        "reassessments_used": 0,
+        "respondent": "",
+        "respondent_evidence_url": "",
+        "respondent_position": "",
+        "status": "RESOLVED"
+      },
+      "history": [
+        {
+          "reassessment": null,
+          "round": 0,
+          "verdict": {
+            "decisive_source": "claimant",
+            "decisive_url": "https://en.wikipedia.org/api/rest_v1/page/summary/Bitcoin",
+            "dispute_id": 1,
+            "outcome": "REFUTED",
+            "quote": "Bitcoin is the first decentralized cryptocurrency. Based on a free-market ideology, bitcoin was invented in 2008 when an unknown person published a white paper under the pseudonym of Satoshi Nakamoto.",
+            "reasoning": "The claimant source states the white paper was published in 2008. That directly contradicts the claim that it was published in 2011.",
+            "resolved_at": "2026-10-25T13:07:01.465234Z",
+            "resolved_by": "0x270d56260e9fe4b1a4524950f850d2643015cacf",
+            "round": 0
+          }
+        }
+      ]
+    },
+    {
+      "dispute": {
+        "acceptance_criteria": "SUPPORTED if a cited source states the Ethereum network launched in 2015; REFUTED if a cited source states another launch year.",
+        "claim": "The Ethereum mainnet launched in 2015.",
+        "claimant": "0x2cdd67e48370f3c317020bdaf69cb5b842356339",
+        "claimant_evidence_url": "https://en.wikipedia.org/api/rest_v1/page/summary/Ethereum",
+        "created_at": "2026-10-25T13:07:46.275456Z",
+        "current_round": 0,
+        "id": 2,
+        "latest_verdict": {
+          "decisive_source": "none",
+          "decisive_url": "",
+          "dispute_id": 2,
+          "outcome": "INCONCLUSIVE",
+          "quote": "",
+          "reasoning": "The only provided source extract describes Ethereum generally but does not state any launch year. Because the evidence does not clearly say the Ethereum network launched in 2015 or another year, the claim cannot be determined from the supplied sources.",
+          "resolved_at": "2026-10-25T13:08:21.601451Z",
+          "resolved_by": "0x270d56260e9fe4b1a4524950f850d2643015cacf",
+          "round": 0
+        },
+        "max_reassessments": 1,
+        "reassessments_used": 0,
+        "respondent": "",
+        "respondent_evidence_url": "",
+        "respondent_position": "",
+        "status": "RESOLVED"
+      },
+      "history": [
+        {
+          "reassessment": null,
+          "round": 0,
+          "verdict": {
+            "decisive_source": "none",
+            "decisive_url": "",
+            "dispute_id": 2,
+            "outcome": "INCONCLUSIVE",
+            "quote": "",
+            "reasoning": "The only provided source extract describes Ethereum generally but does not state any launch year. Because the evidence does not clearly say the Ethereum network launched in 2015 or another year, the claim cannot be determined from the supplied sources.",
+            "resolved_at": "2026-10-25T13:08:21.601451Z",
+            "resolved_by": "0x270d56260e9fe4b1a4524950f850d2643015cacf",
+            "round": 0
+          }
+        }
+      ]
+    }
+  ]
+}
